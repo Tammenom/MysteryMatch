@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import WebsiteViews from "../../constantsViews";
-import CardImages from "../../ConstantsCards";
+import { createBoard } from "../../setup";
+import { shuffleArray } from "../../utils";
+import { CardType } from "../../setup";
+import { GameGrid } from "../../App.styles";
+import Card from "../game/Card";
 
 interface Props {
   setActiveView: (view: WebsiteViews) => void;
@@ -11,22 +15,72 @@ interface Card {
 }
 
 const Game: React.FC<Props> = ({ setActiveView }) => {
-  const [cards, setCards] = useState<Card[]>([]); // Hier den Card[]-Typ hinzugefügt
-  const [turns, setTurns] = useState<number>(0); // Hier den number-Typ hinzugefügt
+  const [cards, setCards] = React.useState<CardType[]>(
+    shuffleArray(createBoard())
+  );
+  const [gameWon, setGameWon] = React.useState(false);
+  const [matchedPairs, setMatchedPairs] = React.useState(0);
+  const [clickedCard, setClickedCard] = React.useState<undefined | CardType>(
+    undefined
+  );
+  const handleCardklick = (currentClickedCard: CardType) => {
+    setCards((prev) =>
+      prev.map((card) =>
+        card.id === currentClickedCard.id
+          ? {
+              ...card,
+              flipped: true,
+              clickable: false,
+            }
+          : card
+      )
+    );
 
-  const shuffleCards = () => {
-    const shuffledCards = [...CardImages, ...CardImages]
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card }));
+    //When first card keep it flipped
+    if (!clickedCard) {
+      setClickedCard({ ...currentClickedCard });
+      return;
+    }
 
-    setCards(shuffledCards);
-    setTurns(0);
+    //Match
+
+    if (clickedCard.matchingCardId === currentClickedCard.id) {
+      setMatchedPairs((prev) => prev + 1);
+      setCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentClickedCard.id
+            ? { ...card, clickable: false }
+            : card
+        )
+      );
+      setClickedCard(undefined);
+      return;
+    }
+
+    //No match
+    setTimeout(() => {
+      setCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentClickedCard.id
+            ? {
+                ...card,
+                flipped: false,
+                clickable: true,
+              }
+            : card
+        )
+      );
+    }, 1000);
+    setClickedCard(undefined);
   };
 
   return (
     <div>
-      <h1>Magic Memory</h1>
-      <button onClick={shuffleCards}>Starte ein neues Spiel</button>
+      <GameGrid>
+        {cards.map((card) => (
+          <Card key={card.id} card={card} callback={handleCardklick} />
+        ))}
+      </GameGrid>
     </div>
   );
 };

@@ -23,3 +23,15 @@ button:hover {
   background: #c23866;
   color: #fff;
 }
+
+body {
+  background-color: #2b2d3c;
+  color: wheat;
+}
+
+h1 {
+  color: wheat;
+}
+p {
+  color: bisque;
+}
