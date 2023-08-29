@@ -1,11 +1,17 @@
 import React from "react";
 
-const NamesBar: React.FC<{ names: string[] }> = ({ names }) => {
+const NamesBar: React.FC<{ name: string; wonGames: number }> = ({
+  name,
+  wonGames,
+}) => {
   return (
     <div>
-      {names.map((name, index) => (
-        <p key={index}>{name}</p>
-      ))}
+      <li>
+        <p>{name}</p>
+      </li>
+      <li>
+        <p>{wonGames}</p>
+      </li>
     </div>
   );
 };

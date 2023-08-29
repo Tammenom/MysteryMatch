@@ -13,9 +13,10 @@ interface Card {
 }
 
 interface Player {
+  name: string;
   playerId: number;
-  playerName: string;
-  playerscore: number;
+  isCurrentPlayer: boolean;
+  score: number;
 }
 
 const GameScreen: React.FC = () => {
