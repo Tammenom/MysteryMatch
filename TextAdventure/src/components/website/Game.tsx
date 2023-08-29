@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WebsiteViews from "../../constantsViews";
-import { createBoard } from "../../setup";
-import { shuffleArray } from "../../utils";
-import { CardType } from "../../setup";
-import { GameGrid } from "../../App.styles";
-import Card from "../game/Card";
+import GameScreen from "../game/GameScreen";
+import { namesArray } from "../../data";
+import NamesBar from "../game/NamesBar";
 
 interface Props {
   setActiveView: (view: WebsiteViews) => void;
@@ -14,75 +12,59 @@ interface Card {
   // Weitere Karten-Attribute, falls vorhanden
 }
 
+interface Player {
+  playerId: number;
+  playerName: string;
+  playerscore: number;
+}
+
+function RenderGameScreen() {
+  return <GameScreen />;
+}
+
 const Game: React.FC<Props> = ({ setActiveView }) => {
-  const [cards, setCards] = React.useState<CardType[]>(
-    shuffleArray(createBoard())
-  );
-  const [gameWon, setGameWon] = React.useState(false);
-  const [matchedPairs, setMatchedPairs] = React.useState(0);
-  const [clickedCard, setClickedCard] = React.useState<undefined | CardType>(
-    undefined
-  );
-  const handleCardklick = (currentClickedCard: CardType) => {
-    setCards((prev) =>
-      prev.map((card) =>
-        card.id === currentClickedCard.id
-          ? {
-              ...card,
-              flipped: true,
-              clickable: false,
-            }
-          : card
-      )
-    );
+  const updateGame = () => {
+    console.log("Helllooo");
+  };
 
-    //When first card keep it flipped
-    if (!clickedCard) {
-      setClickedCard({ ...currentClickedCard });
-      return;
-    }
+  useEffect(() => {
+    updateGame();
+  }, []);
 
-    //Match
+  const [isRendered, setIsRendered] = useState(false);
+  const [showStartButton, setShowStartButton] = useState(true);
+  const [startBText, setStartBText] = useState("Starte Spiel!");
 
-    if (clickedCard.matchingCardId === currentClickedCard.id) {
-      setMatchedPairs((prev) => prev + 1);
-      setCards((prev) =>
-        prev.map((card) =>
-          card.id === clickedCard.id || card.id === currentClickedCard.id
-            ? { ...card, clickable: false }
-            : card
-        )
-      );
-      setClickedCard(undefined);
-      return;
-    }
+  const handleStartButtonClick = () => {
+    setIsRendered(!isRendered);
+    setShowStartButton(false);
+    setStartBText("Starte ein neues Spiel!");
+  };
 
-    //No match
-    setTimeout(() => {
-      setCards((prev) =>
-        prev.map((card) =>
-          card.id === clickedCard.id || card.id === currentClickedCard.id
-            ? {
-                ...card,
-                flipped: false,
-                clickable: true,
-              }
-            : card
-        )
-      );
-    }, 1000);
-    setClickedCard(undefined);
+  const handleExitButtonClick = () => {
+    setIsRendered(false);
+    setShowStartButton(true);
+    setStartBText("Starte Spiel!");
   };
 
   return (
     <div>
-      <GameGrid>
-        {cards.map((card) => (
-          <Card key={card.id} card={card} callback={handleCardklick} />
-        ))}
-      </GameGrid>
+      <NamesBar names={namesArray} />
+
+      {showStartButton ? (
+        <button onClick={handleStartButtonClick}>{startBText}</button>
+      ) : (
+        <button onClick={handleStartButtonClick}>
+          Starte ein neues Spiel.
+        </button>
+      )}
+
+      {isRendered && !showStartButton && (
+        <button onClick={handleExitButtonClick}>Beende das Spiel.</button>
+      )}
+
+      {isRendered && <RenderGameScreen />}
     </div>
   );
 };
-
 export default Game;
