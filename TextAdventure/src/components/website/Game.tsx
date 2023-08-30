@@ -18,10 +18,6 @@ interface Player {
   wonGames: number;
 }
 
-function RenderGameScreen() {
-  return <GameScreen />;
-}
-
 const addDefaultPlayerByName = (
   newName: string,
   newPlayerId: number
@@ -43,11 +39,17 @@ const createPlayersFromArray = (namesArray: string[]): Player[] => {
 };
 
 const Game: React.FC<Props> = ({ setActiveView }) => {
-  const handleBeispielfunktion = (player: Player | undefined) => {
+  const handleBeispielfunktion = (playerId: Number) => {
     // Hier kannst du die Logik deiner Beispielfunktion implementieren
-    if (player) {
-      console.log("Spieler mit höchstem Score:", player);
-    }
+    const newPlayerArray: Player[] = playersArr;
+
+    newPlayerArray.forEach((player) => {
+      if (player.playerId === playerId) {
+        player.wonGames = player.wonGames + 1;
+      }
+    });
+    setPlayersArr(newPlayerArray);
+    console.log("Spieler mit höchstem Score:" + playerId);
   };
 
   const updateGame = () => {
@@ -84,6 +86,7 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
   return (
     <div>
       <div>
+        <h1 className="">Gewonne Spiele</h1>
         {playersArr.map((player, index) => (
           <NamesBar key={index} name={player.name} wonGames={player.wonGames} />
         ))}
@@ -101,7 +104,7 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
         <button onClick={handleExitButtonClick}>Beende das Spiel.</button>
       )}
 
-      {isRendered && <RenderGameScreen />}
+      {isRendered && <GameScreen onGameEnd={handleBeispielfunktion} />}
     </div>
   );
 };

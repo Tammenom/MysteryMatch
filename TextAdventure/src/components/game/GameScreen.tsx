@@ -55,7 +55,11 @@ const findPlayerWithHighestScore = (players: Player[]): Player | undefined => {
   return highestScorePlayer;
 };
 
-const GameScreen: React.FC = () => {
+interface Props {
+  onGameEnd: (index: number) => void;
+}
+
+const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
   const [cards, setCards] = React.useState<CardType[]>(
     shuffleArray(createBoard(numberOfCards))
   );
@@ -75,6 +79,8 @@ const GameScreen: React.FC = () => {
       setEventLog(
         "Spiel vorbei. " + playerWithHighestScore?.name + " hat gewonnen!"
       );
+      if (playerWithHighestScore != undefined)
+        onGameEnd(playerWithHighestScore.playerId);
     }
   }, [matchedPairs]);
 
@@ -149,7 +155,7 @@ const GameScreen: React.FC = () => {
   };
 
   const updatePlayerScore = (playerArray: Player[], playerIndex: number) => {
-    playerArray.forEach((player, index) => {
+    playerArray.forEach((player) => {
       if (player.playerId === playerIndex) {
         player.score = player.score + 1;
         console.log(player);
