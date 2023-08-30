@@ -77,7 +77,7 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
     if (matchedPairs === cards.length / 2) {
       const playerWithHighestScore = findPlayerWithHighestScore(playersArr);
       setEventLog(
-        "Spiel vorbei. " + playerWithHighestScore?.name + " hat gewonnen!"
+        "Spiel vorbei " + playerWithHighestScore?.name + " hat gewonnen!"
       );
       if (playerWithHighestScore != undefined)
         onGameEnd(playerWithHighestScore.playerId);
@@ -185,11 +185,11 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
   return (
     <div>
       <div>
-        <h2>Score:</h2>
+        <h2 className="text-2xl">Score:</h2>
         {playersArr.map((player, index) => (
           <NamesBar key={index} name={player.name} wonGames={player.score} />
         ))}
-        <h1>{eventLog}</h1>
+        <h1 className="text-lg text-red-500">{eventLog}</h1>
       </div>
       <GameGrid>
         {cards.map((card) => (

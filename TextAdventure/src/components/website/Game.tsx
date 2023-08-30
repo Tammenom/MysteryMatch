@@ -40,7 +40,6 @@ const createPlayersFromArray = (namesArray: string[]): Player[] => {
 
 const Game: React.FC<Props> = ({ setActiveView }) => {
   const handleBeispielfunktion = (playerId: Number) => {
-    // Hier kannst du die Logik deiner Beispielfunktion implementieren
     const newPlayerArray: Player[] = playersArr;
 
     newPlayerArray.forEach((player) => {
@@ -86,7 +85,7 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
   return (
     <div>
       <div>
-        <h1 className="">Gewonne Spiele</h1>
+        <h1 className="text-lg">Gewonne Spiele</h1>
         {playersArr.map((player, index) => (
           <NamesBar key={index} name={player.name} wonGames={player.wonGames} />
         ))}
