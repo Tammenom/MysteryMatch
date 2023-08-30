@@ -32,7 +32,7 @@ export type CardType = {
   matchingCardId: string;
 };
 
-var cardsInGame: number = 8;
+export var numberOfCards: number = 3;
 
 const imagePaths: string[] = [];
 
@@ -63,15 +63,16 @@ const cards: string[] = [
   card100,
 ];
 
-export const createBoard = (): CardType[] =>
-  [...cards, ...cards].map((card, i) => ({
+export const createBoard = (numberOfCards: number): CardType[] =>
+  Array.from({ length: numberOfCards * 2 }).map((_, i) => ({
     id: `card${i}`,
     flipped: false,
     backImage: cardCover,
-    frontImage: card,
+    frontImage: cards[i % numberOfCards],
     clickable: true,
-    matchingCardId:
-      i < card.length ? `card${i + cards.length}` : `cards${i - cards.length}`,
+    matchingCardId: `card${
+      i < numberOfCards ? i + numberOfCards : i - numberOfCards
+    }`,
   }));
 
 //

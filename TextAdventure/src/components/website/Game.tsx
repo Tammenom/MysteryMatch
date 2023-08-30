@@ -39,11 +39,17 @@ const createPlayersFromArray = (namesArray: string[]): Player[] => {
   const playerObjects: Player[] = namesArray.map((name, index) => {
     return addDefaultPlayerByName(name, index);
   });
-
   return playerObjects;
 };
 
 const Game: React.FC<Props> = ({ setActiveView }) => {
+  const handleBeispielfunktion = (player: Player | undefined) => {
+    // Hier kannst du die Logik deiner Beispielfunktion implementieren
+    if (player) {
+      console.log("Spieler mit höchstem Score:", player);
+    }
+  };
+
   const updateGame = () => {
     createPlayers();
   };
