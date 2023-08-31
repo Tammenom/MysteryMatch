@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { numberOfCards } from "../../setup";
 import { updateNumberOfCards } from "../../setup";
 
@@ -35,7 +35,6 @@ const CardOptions: React.FC = () => {
         >
           -
         </button>
-
         <p className="text-black bg-white text-2xl px-4">{cardsNumber * 2}</p>
         <button
           className="text-2xl  px-3 self-center bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white/80 hover:border-double border-4 border-white/0"

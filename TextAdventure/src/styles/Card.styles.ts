@@ -1,15 +1,5 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-  position: relative;
-  perspective: 1000px;
-
-  .front.flipped {
-    z-index: 1;
-    transform: rotateY(180deg);
-  }
-`;
-
 type Props = {
   flipped: boolean;
 };
@@ -21,6 +11,16 @@ const sharedStyles = css`
   backface-visibility: hidden;
   cursor: pointer;
   transform-style: preserve-3d;
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+  perspective: 1000px;
+
+  .front.flipped {
+    z-index: 1;
+    transform: rotateY(180deg);
+  }
 `;
 
 export const FrontImg = styled.img<Props>`

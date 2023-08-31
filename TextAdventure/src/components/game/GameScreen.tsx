@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import WebsiteViews from "../../constantsViews";
 import { createBoard, numberOfCards } from "../../setup";
 import { shuffleArray } from "../../utils";
 import { CardType } from "../../setup";
@@ -10,13 +9,16 @@ import NamesBar from "./NamesBar";
 
 interface Card {
   src: string;
-  // Weitere Karten-Attribute, falls vorhanden
 }
 
 interface Player {
   name: string;
   playerId: number;
   score: number;
+}
+
+interface Props {
+  onGameEnd: (index: number) => void;
 }
 
 const addDefaultPlayerByName = (
@@ -54,10 +56,6 @@ const findPlayerWithHighestScore = (players: Player[]): Player | undefined => {
 
   return highestScorePlayer;
 };
-
-interface Props {
-  onGameEnd: (index: number) => void;
-}
 
 const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
   const [cards, setCards] = React.useState<CardType[]>(
@@ -97,9 +95,8 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
             : card
         )
       );
-      const updateGame = () => {};
+
       console.log(currentPlayer);
-      //When first card keep it flipped
       if (!clickedCard) {
         setClickedCard({ ...currentClickedCard });
         return;
@@ -140,6 +137,7 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
       setClickedCard(undefined);
     }
   };
+
   useEffect(() => {
     createPlayers();
     setCurrentPlayer(0);

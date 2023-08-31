@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { namesArray, updateNamesArray } from "../../data"; // Importiere das Array aus dem data.ts Modul
-import { debug } from "console";
-import NamesBar from "../game/NamesBar";
 import NamesList from "../game/NamesList";
 
 const SettingView: React.FC = () => {
@@ -34,10 +32,8 @@ const SettingView: React.FC = () => {
   const handleDeleteName = (index: number) => {
     const updatedNamesArray = [...namesArray];
     updatedNamesArray.splice(index, 0);
-    updateNamesArray(index); // Array in data aktualisieren
-
-    setNames(updatedNamesArray); // Aktualisiere namesArr statt namesArray
-
+    updateNamesArray(index);
+    setNames(updatedNamesArray);
     console.log("Pew");
     console.log(namesArray);
     console.log(namesArr);

@@ -10,7 +10,6 @@ interface Props {
 }
 interface Card {
   src: string;
-  // Weitere Karten-Attribute, falls vorhanden
 }
 
 interface Player {
@@ -39,8 +38,27 @@ const createPlayersFromArray = (namesArray: string[]): Player[] => {
   return playerObjects;
 };
 
-const Game: React.FC<Props> = ({ setActiveView }) => {
-  const handleBeispielfunktion = (playerId: Number) => {
+const Game: React.FC<Props> = () => {
+  const [isRendered, setIsRendered] = useState(false);
+  const [showStartButton, setShowStartButton] = useState(true);
+  const [startBText, setStartBText] = useState("Start a new Game");
+  const [playersArr, setPlayersArr] = useState<Player[]>([]);
+
+  useEffect(() => {
+    updateGame();
+  }, []);
+
+  const updateGame = () => {
+    createPlayers();
+  };
+
+  const createPlayers = () => {
+    const playersArray: Player[] = createPlayersFromArray(namesArray);
+    setPlayersArr(playersArray);
+    console.log(playersArr);
+  };
+
+  const handleGameEnd = (playerId: Number) => {
     const newPlayerArray: Player[] = playersArr;
 
     newPlayerArray.forEach((player) => {
@@ -52,19 +70,6 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
     console.log("Spieler mit höchstem Score:" + playerId);
   };
 
-  const updateGame = () => {
-    createPlayers();
-  };
-
-  useEffect(() => {
-    updateGame();
-  }, []);
-
-  const [isRendered, setIsRendered] = useState(false);
-  const [showStartButton, setShowStartButton] = useState(true);
-  const [startBText, setStartBText] = useState("Start a new Game");
-  const [playersArr, setPlayersArr] = useState<Player[]>([]);
-
   const handleStartButtonClick = () => {
     setIsRendered(true);
     setShowStartButton(false);
@@ -75,12 +80,6 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
     setIsRendered(false);
     setShowStartButton(true);
     setStartBText("Start a new Game");
-  };
-
-  const createPlayers = () => {
-    const playersArray: Player[] = createPlayersFromArray(namesArray);
-    setPlayersArr(playersArray);
-    console.log(playersArr);
   };
 
   return (
@@ -117,7 +116,7 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
         </div>
       )}
 
-      {isRendered && <GameScreen onGameEnd={handleBeispielfunktion} />}
+      {isRendered && <GameScreen onGameEnd={handleGameEnd} />}
     </GameDiv>
   );
 };

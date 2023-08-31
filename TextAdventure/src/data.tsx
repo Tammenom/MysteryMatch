@@ -7,7 +7,6 @@ interface Player {
 }
 
 export const playerArray: Player[] = [];
-
 export const namesArray: string[] = [];
 
 export const updateNamesArray = (index: number) => {
