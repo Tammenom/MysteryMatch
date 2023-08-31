@@ -14,7 +14,7 @@ import card9 from "./img/card9.jpg";
 import card10 from "./img/card10.jpg";
 import card11 from "./img/card11.jpg";
 import card12 from "./img/card12.jpg";
-import card100 from "./img/card100.jpg";
+import card100 from "./img/card13.jpg";
 
 import path from "path";
 interface Card {
@@ -33,7 +33,11 @@ export type CardType = {
   matchingCardId: string;
 };
 
-export var numberOfCards: number = 12;
+export var numberOfCards: number = 3;
+
+export const updateNumberOfCards = (newNumber: number) => {
+  numberOfCards = newNumber;
+};
 
 const imagePaths: string[] = [];
 

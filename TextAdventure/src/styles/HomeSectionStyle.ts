@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import backgroundHome from "@/img/backgroundHome.jpg";
 import backgroundRules from "@/img/backgroundRules.jpg";
 import backgroundSettings from "@/img/backgroundSettings.jpg";
+import backgroundGame from "@/img/backgroundGame.jpg";
 
 const sharedStyles = css`
   background-repeat: no-repeat;
@@ -17,7 +18,8 @@ const sharedStyles = css`
 
 export const GameDiv = styled.div`
   ${sharedStyles}
-  background-color:#0b0716;
+  background-image: url(${backgroundGame});
+  background-color: #0b0716;
 `;
 
 export const SettingsDiv = styled.div`
@@ -51,6 +53,7 @@ export const NavP = styled.p`
     background: none;
   }
   button {
+    align-self: center;
     text-align: center;
     padding-right: 1rem;
     font-size: 1.3rem;
@@ -58,4 +61,6 @@ export const NavP = styled.p`
     border: none;
     color: white;
   }
+
+  align-self: center;
 `;

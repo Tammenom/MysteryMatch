@@ -62,19 +62,19 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
 
   const [isRendered, setIsRendered] = useState(false);
   const [showStartButton, setShowStartButton] = useState(true);
-  const [startBText, setStartBText] = useState("Starte Spiel!");
+  const [startBText, setStartBText] = useState("Start a new Game");
   const [playersArr, setPlayersArr] = useState<Player[]>([]);
 
   const handleStartButtonClick = () => {
-    setIsRendered(!isRendered);
+    setIsRendered(true);
     setShowStartButton(false);
-    setStartBText("Starte ein neues Spiel!");
+    setStartBText("End Game");
   };
 
   const handleExitButtonClick = () => {
     setIsRendered(false);
     setShowStartButton(true);
-    setStartBText("Starte Spiel!");
+    setStartBText("Start a new Game");
   };
 
   const createPlayers = () => {
@@ -85,38 +85,36 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
 
   return (
     <GameDiv>
-      <h1 className="text-2xl basis-1/12 self-center  font-bold   text-white py-3 px-28">
-        Won Games:
-      </h1>
-      <div className="flex basis-1/12 flex-row justify-center">
-        {playersArr.map((player, index) => (
-          <NamesBar key={index} name={player.name} wonGames={player.wonGames} />
-        ))}
-      </div>
-
       {showStartButton ? (
         <button
-          className="  basis-1/12 text-xl self-center font-bold px-2 my-2"
+          className="  basis-1/12  font-bold  text-lg  px-2 mx-5 self-center border-white bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-2 border-transparent"
           onClick={handleStartButtonClick}
         >
           {startBText}
         </button>
       ) : (
         <button
-          className=" basis-1/12 text-xl self-center font-bold px-2"
-          onClick={handleStartButtonClick}
-        >
-          Starte ein neues Spiel.
-        </button>
-      )}
-
-      {isRendered && !showStartButton && (
-        <button
-          className=" basis-1/12 text-xl self-center  font-bold px-2"
+          className="  basis-1/12  font-bold  text-lg  px-2 mx-5 self-center border-white bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-2 border-transparent"
           onClick={handleExitButtonClick}
         >
-          Beende das Spiel.
+          {startBText}
         </button>
+      )}
+      {!isRendered && (
+        <div className="self-center ">
+          <h1 className="text-2xl basis-1/12 self-center  font-bold   text-white py-3 px-28">
+            Won Games:
+          </h1>
+          <div className="flex basis-1/12 flex-row justify-center">
+            {playersArr.map((player, index) => (
+              <NamesBar
+                key={index}
+                name={player.name}
+                wonGames={player.wonGames}
+              />
+            ))}
+          </div>
+        </div>
       )}
 
       {isRendered && <GameScreen onGameEnd={handleBeispielfunktion} />}

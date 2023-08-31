@@ -15,6 +15,7 @@
   background: #17171c;
   color: blanchedalmond;
 }
+/*
 
 button {
   background: none;
@@ -25,13 +26,18 @@ button {
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
+
+  border-style: double;
 }
 
 button:hover {
-  background: #6a31bf;
+  background: rgb(106, 49, 191, 0.5);
+
   color: white;
-  border: none;
-}
+
+  border: 2px solid #fff;
+  border-style: double;
+}*/
 
 html,
 body {

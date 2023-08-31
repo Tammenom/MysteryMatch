@@ -10,14 +10,14 @@ interface Props {
 const Navbar: React.FC<Props> = ({ setActiveView }) => {
   return (
     <div className="z-1 position:fixed">
-      <nav className="bg-primary-100 py-3 flex flex-row">
+      <nav className="bg-primary-100 py-2 flex flex-row">
         <img
-          className="max-h-10 flex-none"
+          className="max-h-12 flex-none"
           alt="logo"
           src={Logo}
           onClick={() => setActiveView(WebsiteViews.HOME)}
         />
-        <div className="max-h-12 grow flex flex-row justify-start ">
+        <div className="max-h-14 grow flex flex-row justify-start ">
           <NavP>
             <button onClick={() => setActiveView(WebsiteViews.HOME)}>
               HOME
@@ -36,8 +36,8 @@ const Navbar: React.FC<Props> = ({ setActiveView }) => {
         </div>
 
         <button
-          className="font-bold flex-none mx-4 px-2 hover:font-bold"
-          onClick={() => setActiveView(WebsiteViews.GAME)}
+          className="text-lg py-1 px-2 mx-5 self-center border-white bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-2 border-transparent"
+          onClick={() => setActiveView(WebsiteViews.SETTINGS)}
         >
           PLAY NOW!
         </button>

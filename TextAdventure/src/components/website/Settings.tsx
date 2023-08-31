@@ -3,6 +3,7 @@ import React from "react";
 import WebsiteViews from "../../constantsViews";
 import SettingView from "./SettingsView";
 import { SettingsDiv } from "../../styles/HomeSectionStyle";
+import CardOptions from "./CardsOptions";
 
 interface Props {
   setActiveView: (view: WebsiteViews) => void;
@@ -24,6 +25,7 @@ const Settings: React.FC<Props> = ({ setActiveView }) => {
       <div className=" self-center flex flex-row justify-center">
         <SettingView />
       </div>
+      <CardOptions />
 
       <div className="basis-4/10 flex flex-col justify-center">
         <button

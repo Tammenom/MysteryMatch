@@ -62,8 +62,6 @@ const SettingView: React.FC = () => {
       </button>
       {message && <p>{message}</p>}
 
-      <h3 className="text-2xl  px-3 self-center">Players:</h3>
-
       <NamesList names={namesArray} onButtonClick={handleDeleteName} />
     </div>
   );
