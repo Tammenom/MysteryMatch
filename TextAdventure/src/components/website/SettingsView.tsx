@@ -45,17 +45,24 @@ const SettingView: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <h2 className="self-center text-2xl py-2">Players</h2>
+      <h2 className="self-center font-bold text-1xl py-2">
+        Enter Player here.
+      </h2>
       <input
-        className="self-center text-2xl py-2"
+        className="text-gray-800 self-center text-2xl py-2"
         type="text"
         value={name}
         onChange={handleNameChange}
       />
-      <button onClick={handleNameSubmit}>Hinzufügen</button>
+      <button
+        className="text-2xl  px-3 self-center bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white/80 hover:border-double border-4 border-white/0"
+        onClick={handleNameSubmit}
+      >
+        Add Player
+      </button>
       {message && <p>{message}</p>}
 
-      <h3>Namen Liste:</h3>
+      <h3 className="text-2xl  px-3 self-center">Players:</h3>
 
       <NamesList names={namesArray} onButtonClick={handleDeleteName} />
     </div>

@@ -183,14 +183,18 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h2 className="text-2xl">Score:</h2>
+    <div className="flex flex-col ">
+      <div className="flex flex-row ">
+        <h2 className="text-xl  self-center  font-bold   text-white py-7 px-28">
+          Score:
+        </h2>
         {playersArr.map((player, index) => (
           <NamesBar key={index} name={player.name} wonGames={player.score} />
         ))}
-        <h1 className="text-lg text-red-500">{eventLog}</h1>
       </div>
+      <h1 className="text-lg  self-center font-bold py-7 text-red-500">
+        {eventLog}
+      </h1>
       <GameGrid>
         {cards.map((card) => (
           <Card key={card.id} card={card} callback={handleCardklick} />

@@ -15,6 +15,11 @@ const sharedStyles = css`
   justify-content: space-center;
 `;
 
+export const GameDiv = styled.div`
+  ${sharedStyles}
+  background-color:#0b0716;
+`;
+
 export const SettingsDiv = styled.div`
   ${sharedStyles}
   background-image: url(${backgroundRules});
@@ -28,6 +33,13 @@ export const RulesDiv = styled.div`
 export const HomeDiv = styled.div`
   ${sharedStyles}
   background-image: url(${backgroundHome});
+`;
+
+export const GameGrid = styled.div`
+  background-image: url(${backgroundHome});
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 2fr));
+  grid-gap: 0.5rem;
 `;
 
 export const NavP = styled.p`

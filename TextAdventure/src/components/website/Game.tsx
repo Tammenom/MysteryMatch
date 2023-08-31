@@ -3,6 +3,7 @@ import WebsiteViews from "../../constantsViews";
 import GameScreen from "../game/GameScreen";
 import { namesArray } from "../../data";
 import NamesBar from "../game/NamesBar";
+import { GameDiv } from "../../styles/HomeSectionStyle";
 
 interface Props {
   setActiveView: (view: WebsiteViews) => void;
@@ -83,28 +84,43 @@ const Game: React.FC<Props> = ({ setActiveView }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h1 className="text-lg">Gewonne Spiele</h1>
+    <GameDiv>
+      <h1 className="text-2xl basis-1/12 self-center  font-bold   text-white py-3 px-28">
+        Won Games:
+      </h1>
+      <div className="flex basis-1/12 flex-row justify-center">
         {playersArr.map((player, index) => (
           <NamesBar key={index} name={player.name} wonGames={player.wonGames} />
         ))}
       </div>
 
       {showStartButton ? (
-        <button onClick={handleStartButtonClick}>{startBText}</button>
+        <button
+          className="  basis-1/12 text-xl self-center font-bold px-2 my-2"
+          onClick={handleStartButtonClick}
+        >
+          {startBText}
+        </button>
       ) : (
-        <button onClick={handleStartButtonClick}>
+        <button
+          className=" basis-1/12 text-xl self-center font-bold px-2"
+          onClick={handleStartButtonClick}
+        >
           Starte ein neues Spiel.
         </button>
       )}
 
       {isRendered && !showStartButton && (
-        <button onClick={handleExitButtonClick}>Beende das Spiel.</button>
+        <button
+          className=" basis-1/12 text-xl self-center  font-bold px-2"
+          onClick={handleExitButtonClick}
+        >
+          Beende das Spiel.
+        </button>
       )}
 
       {isRendered && <GameScreen onGameEnd={handleBeispielfunktion} />}
-    </div>
+    </GameDiv>
   );
 };
 export default Game;

@@ -11,13 +11,13 @@ interface Props {
 const Settings: React.FC<Props> = ({ setActiveView }) => {
   return (
     <SettingsDiv>
-      <div className="basis-4/12 flex flex-col justify-center">
+      <div className="basis-3/12 flex flex-col justify-center">
         <h1 className="text-8xl self-center font-bold  text-white py-7 px-28">
           Settings
         </h1>
       </div>
       <div className="basis-2/10 flex flex-col justify-center">
-        <p className="text-2xl self-center  font-bold  text-white py-7 px-28">
+        <p className="text-2xl self-center  font-bold   text-white py-7 px-28">
           Stop! Before you start the game, you must first enter all the players!
         </p>
       </div>

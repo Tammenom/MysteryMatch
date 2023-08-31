@@ -33,7 +33,7 @@ export type CardType = {
   matchingCardId: string;
 };
 
-export var numberOfCards: number = 3;
+export var numberOfCards: number = 12;
 
 const imagePaths: string[] = [];
 

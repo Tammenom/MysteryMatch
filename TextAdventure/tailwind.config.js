@@ -12,6 +12,7 @@ module.exports = {
         "purple-light": "#a383ff",
         "darkgray-purple": "#1c1b24",
         "middle-purple": "#4e18a0",
+        "very-dark-purple": "#0b0716",
       },
       backgroundImage: (theme) => ({
         "gradient-yellowred":
