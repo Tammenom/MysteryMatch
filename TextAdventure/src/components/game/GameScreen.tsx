@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { createBoard, numberOfCards } from "../../setup";
-import { shuffleArray } from "../../utils";
-import { CardType } from "../../setup";
+import { createBoard, numberOfCards } from "./Setup";
+import { shuffleArray } from "./utils";
+import { CardType } from "./Setup";
 import { GameGrid } from "../../App.styles";
 import Card from "../game/Card";
-import { namesArray } from "../../data";
-import NamesBar from "./NamesBar";
+import { namesArray } from "../settings/settingsOptions";
+import NamesBar from "./ScoreBoard";
 
 interface Card {
   src: string;
@@ -103,7 +103,6 @@ const GameScreen: React.FC<Props> = ({ onGameEnd }) => {
       }
 
       //Match
-
       if (clickedCard.matchingCardId === currentClickedCard.id) {
         setMatchedPairs((prev) => prev + 1);
         setCards((prev) =>

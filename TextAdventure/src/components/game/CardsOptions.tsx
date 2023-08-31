@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { numberOfCards } from "../../setup";
-import { updateNumberOfCards } from "../../setup";
+import { updateNumberOfCards, numberOfCards } from "./Setup";
 
 const CardOptions: React.FC = () => {
   const maxCards = 20;

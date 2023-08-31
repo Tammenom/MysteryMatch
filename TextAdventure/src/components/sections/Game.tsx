@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import WebsiteViews from "../../constantsViews";
+import WebsiteSections from "./constantsSections";
 import GameScreen from "../game/GameScreen";
-import { namesArray } from "../../data";
-import NamesBar from "../game/NamesBar";
+import { namesArray } from "../settings/settingsOptions";
+import NamesBar from "../game/ScoreBoard";
 import { GameDiv } from "../../styles/HomeSectionStyle";
 
 interface Props {
-  setActiveView: (view: WebsiteViews) => void;
+  setActiveView: (view: WebsiteSections) => void;
 }
 interface Card {
   src: string;

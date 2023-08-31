@@ -1,26 +1,25 @@
 import "./styles/tailwind.css";
 import "./styles/index.css";
-import "./App.css";
 import React, { useState } from "react";
-import Navbar from "./components/website/Navbar";
-import Home from "./components/website/Home";
-import Rules from "./components/website/Rules";
-import Settings from "./components/website/Settings";
-import Game from "./components/website/Game";
-import WebsiteViews from "./constantsViews";
+import Navbar from "./components/other/Navbar";
+import Home from "./components/sections/Home";
+import Rules from "./components/sections/Rules";
+import Settings from "./components/sections/Settings";
+import Game from "./components/sections/Game";
+import WebsiteSections from "./components/sections/constantsSections";
 
 const App: React.FC = () => {
-  const [activeView, setActiveView] = useState(WebsiteViews.HOME);
+  const [activeView, setActiveView] = useState(WebsiteSections.HOME);
 
   const renderView = () => {
     switch (activeView) {
-      case WebsiteViews.HOME:
+      case WebsiteSections.HOME:
         return <Home setActiveView={setActiveView} />;
-      case WebsiteViews.RULES:
+      case WebsiteSections.RULES:
         return <Rules setActiveView={setActiveView} />;
-      case WebsiteViews.SETTINGS:
+      case WebsiteSections.SETTINGS:
         return <Settings setActiveView={setActiveView} />;
-      case WebsiteViews.GAME:
+      case WebsiteSections.GAME:
         return <Game setActiveView={setActiveView} />;
       default:
         return null;

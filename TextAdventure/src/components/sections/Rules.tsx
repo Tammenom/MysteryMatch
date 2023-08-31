@@ -1,10 +1,10 @@
 // Rules.tsx
 import React from "react";
-import WebsiteViews from "../../constantsViews";
+import WebsiteSections from "./constantsSections";
 import { RulesDiv } from "../../styles/HomeSectionStyle";
 
 interface Props {
-  setActiveView: (view: WebsiteViews) => void;
+  setActiveView: (view: WebsiteSections) => void;
 }
 
 const Rules: React.FC<Props> = ({ setActiveView }) => {
@@ -37,7 +37,7 @@ const Rules: React.FC<Props> = ({ setActiveView }) => {
         <div className="flex flex-row justify-center">
           <button
             className="text-3xl py-7 px-6 bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-4 border-transparent"
-            onClick={() => setActiveView(WebsiteViews.SETTINGS)}
+            onClick={() => setActiveView(WebsiteSections.SETTINGS)}
           >
             "Okay let's play!"
           </button>

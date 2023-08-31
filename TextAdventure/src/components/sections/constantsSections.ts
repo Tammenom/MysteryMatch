@@ -1,8 +1,8 @@
-enum WebsiteViews {
+enum WebsiteSections {
   HOME = "home",
   RULES = "rules",
   SETTINGS = "settings",
   GAME = "game",
 }
 
-export default WebsiteViews;
+export default WebsiteSections;

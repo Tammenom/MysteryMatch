@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { namesArray, updateNamesArray } from "../../data"; // Importiere das Array aus dem data.ts Modul
-import NamesList from "../game/NamesList";
+import { namesArray, updateNamesArray } from "./settingsOptions"; // Importiere das Array aus dem data.ts Modul
+import NamesList from "../other/NamesList";
 
 const SettingView: React.FC = () => {
   const maxPlayers = 8;

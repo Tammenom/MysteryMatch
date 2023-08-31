@@ -1,9 +1,9 @@
 import React from "react";
-import WebsiteViews from "../../constantsViews";
+import WebsiteSections from "./constantsSections";
 import { HomeDiv } from "../../styles/HomeSectionStyle";
 
 interface Props {
-  setActiveView: (view: WebsiteViews) => void;
+  setActiveView: (view: WebsiteSections) => void;
 }
 
 const Home: React.FC<Props> = ({ setActiveView }) => {
@@ -21,7 +21,7 @@ const Home: React.FC<Props> = ({ setActiveView }) => {
         <div className="flex flex-row justify-center">
           <button
             className="text-5xl py-7 px-6 bg-primary-100/30 hover:bg-middle-purple/50 hover:border-white hover:border-double border-4 border-transparent"
-            onClick={() => setActiveView(WebsiteViews.SETTINGS)}
+            onClick={() => setActiveView(WebsiteSections.SETTINGS)}
           >
             Start a new Game!
           </button>

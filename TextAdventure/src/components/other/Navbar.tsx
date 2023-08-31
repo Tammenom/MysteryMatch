@@ -1,10 +1,10 @@
 import React from "react";
-import WebsiteViews from "../../constantsViews";
+import WebsiteSections from "../sections/constantsSections";
 import Logo from "@/img/Logo.png";
 import { NavP } from "../../styles/HomeSectionStyle";
 
 interface Props {
-  setActiveView: (view: WebsiteViews) => void;
+  setActiveView: (view: WebsiteSections) => void;
 }
 
 const Navbar: React.FC<Props> = ({ setActiveView }) => {
@@ -15,21 +15,21 @@ const Navbar: React.FC<Props> = ({ setActiveView }) => {
           className="max-h-12 flex-none"
           alt="logo"
           src={Logo}
-          onClick={() => setActiveView(WebsiteViews.HOME)}
+          onClick={() => setActiveView(WebsiteSections.HOME)}
         />
         <div className="max-h-14 grow flex flex-row justify-start ">
           <NavP>
-            <button onClick={() => setActiveView(WebsiteViews.HOME)}>
+            <button onClick={() => setActiveView(WebsiteSections.HOME)}>
               HOME
             </button>
           </NavP>
           <NavP>
-            <button onClick={() => setActiveView(WebsiteViews.RULES)}>
+            <button onClick={() => setActiveView(WebsiteSections.RULES)}>
               RULES
             </button>
           </NavP>
           <NavP>
-            <button onClick={() => setActiveView(WebsiteViews.SETTINGS)}>
+            <button onClick={() => setActiveView(WebsiteSections.SETTINGS)}>
               SETTINGS
             </button>
           </NavP>
@@ -37,7 +37,7 @@ const Navbar: React.FC<Props> = ({ setActiveView }) => {
 
         <button
           className="text-lg py-1 px-2 mx-5 self-center border-white bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-2 border-transparent"
-          onClick={() => setActiveView(WebsiteViews.SETTINGS)}
+          onClick={() => setActiveView(WebsiteSections.SETTINGS)}
         >
           PLAY NOW!
         </button>

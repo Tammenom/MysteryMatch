@@ -1,12 +1,12 @@
 // Settings.tsx
 import React from "react";
-import WebsiteViews from "../../constantsViews";
-import SettingView from "./SettingsView";
+import WebsiteSections from "./constantsSections";
+import SettingView from "../settings/SettingsView";
 import { SettingsDiv } from "../../styles/HomeSectionStyle";
-import CardOptions from "./CardsOptions";
+import CardOptions from "../game/CardsOptions";
 
 interface Props {
-  setActiveView: (view: WebsiteViews) => void;
+  setActiveView: (view: WebsiteSections) => void;
 }
 
 const Settings: React.FC<Props> = ({ setActiveView }) => {
@@ -30,7 +30,7 @@ const Settings: React.FC<Props> = ({ setActiveView }) => {
       <div className="basis-4/10 flex flex-col justify-center">
         <button
           className="text-2xl py-4 px-3 self-center bg-primary-100/50 hover:bg-middle-purple/50 hover:border-white hover:border-double border-4 border-transparent"
-          onClick={() => setActiveView(WebsiteViews.GAME)}
+          onClick={() => setActiveView(WebsiteSections.GAME)}
         >
           Play the Game!
         </button>
