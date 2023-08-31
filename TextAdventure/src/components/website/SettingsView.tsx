@@ -44,9 +44,14 @@ const SettingView: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Settings View</h2>
-      <input type="text" value={name} onChange={handleNameChange} />
+    <div className="flex flex-col">
+      <h2 className="self-center text-2xl py-2">Players</h2>
+      <input
+        className="self-center text-2xl py-2"
+        type="text"
+        value={name}
+        onChange={handleNameChange}
+      />
       <button onClick={handleNameSubmit}>Hinzufügen</button>
       {message && <p>{message}</p>}
 

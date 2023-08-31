@@ -1,6 +1,6 @@
 import React from "react";
 import WebsiteViews from "../../constantsViews";
-import { Fragment } from "react";
+import { NavP } from "../../styles/HomeSectionStyle";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 

@@ -15,6 +15,7 @@ import card10 from "./img/card10.jpg";
 import card11 from "./img/card11.jpg";
 import card12 from "./img/card12.jpg";
 import card100 from "./img/card100.jpg";
+
 import path from "path";
 interface Card {
   src: string;
